@@ -9,4 +9,5 @@ public class Pair {
     public Object maxLotSize;
     public String minPrice;
     public String maxPrice;
+
 }
