@@ -1,10 +1,13 @@
 package com.example.cexioproject;
 
+import com.example.cexioproject.dto.Root;
 import com.example.cexioproject.service.CexExternalService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
@@ -13,12 +16,15 @@ class CexIoProjectApplicationTests {
     @Autowired
     private CexExternalService cexExternalService;
     @Test
-    void contextLoads() {
+    void contextLoads() throws JsonProcessingException {
         // Given
         //When
-        String allData = cexExternalService.getAllData();
+        Root allData = cexExternalService.getAllData();
         //Then
         assertNotNull(allData);
+        assertEquals("ok", allData.ok);
+        assertEquals("currency_limits", allData.e);
+
     }
 
 }
