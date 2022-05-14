@@ -1,12 +1,19 @@
-package com.example.cexioproject.dto;
+package com.example.cexioproject.entities;
 
-public class Pair {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Pairs")
+public class PairEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String symbol1;
     private String symbol2;
     private String pricePrecision;
-    private double minLotSize;
-    private double minLotSizeS2;
-    private Object maxLotSize;
+    private Double minLotSize;
+    private Double minLotSizeS2;
+    private String maxLotSize;
     private String minPrice;
     private String maxPrice;
 
@@ -34,27 +41,27 @@ public class Pair {
         this.pricePrecision = pricePrecision;
     }
 
-    public double getMinLotSize() {
+    public Double getMinLotSize() {
         return minLotSize;
     }
 
-    public void setMinLotSize(double minLotSize) {
+    public void setMinLotSize(Double minLotSize) {
         this.minLotSize = minLotSize;
     }
 
-    public double getMinLotSizeS2() {
+    public Double getMinLotSizeS2() {
         return minLotSizeS2;
     }
 
-    public void setMinLotSizeS2(double minLotSizeS2) {
+    public void setMinLotSizeS2(Double minLotSizeS2) {
         this.minLotSizeS2 = minLotSizeS2;
     }
 
-    public Object getMaxLotSize() {
+    public String getMaxLotSize() {
         return maxLotSize;
     }
 
-    public void setMaxLotSize(Object maxLotSize) {
+    public void setMaxLotSize(String maxLotSize) {
         this.maxLotSize = maxLotSize;
     }
 

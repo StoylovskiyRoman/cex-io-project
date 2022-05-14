@@ -22,8 +22,8 @@ class CexIoProjectApplicationTests {
         Root allData = cexExternalService.getAllData();
         //Then
         assertNotNull(allData);
-        assertEquals("ok", allData.ok);
-        assertEquals("currency_limits", allData.e);
+        assertEquals("ok", allData.getStatus());
+        assertEquals("currency_limits", allData.getEndPoint());
 
     }
 
