@@ -1,6 +1,7 @@
 package com.example.cexioproject;
 
 import com.example.cexioproject.dto.Root;
+import com.example.cexioproject.repository.PairsRepository;
 import com.example.cexioproject.service.CexExternalService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
@@ -15,11 +16,15 @@ class CexIoProjectApplicationTests {
 
     @Autowired
     private CexExternalService cexExternalService;
+
+    @Autowired
+    private PairsRepository pairsRepository;
     @Test
     void contextLoads() throws JsonProcessingException {
         // Given
         //When
         Root allData = cexExternalService.getAllData();
+        //pairsRepository.saveAll(allData.getData().getPairs());
         //Then
         assertNotNull(allData);
         assertEquals("ok", allData.getStatus());
