@@ -14,6 +14,8 @@ public interface PairsRepository extends JpaRepository <PairEntity, Long> {
 
    List<PairEntity> findBySymbol1OrderByMinPriceAsc(String currencyName);
 
+   List<PairEntity> findBySymbol1OrderByMaxPriceDesc(String currencyName);
+
    List<PairEntity> findBySymbol1(String currencyName, Pageable pageable);
 
 }

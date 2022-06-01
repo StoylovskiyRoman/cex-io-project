@@ -27,6 +27,11 @@ public class CexController {
     public Pair getMinPair (@RequestParam ("name") String currencyName){
         return this.cexService.getMinPair(currencyName).get(0);
     }
+    @GetMapping("/maxprice")
+    public Pair getMaxPairs (@RequestParam ("name") String currencyName){
+        return this.cexService.getMaxPairs(currencyName).get(0);
+    }
+
     @GetMapping("/")
     public List<Pair> getAllDataWithPaging (@RequestParam ("name") String currencyName, @RequestParam ("page")
     int page, @RequestParam ("size") int size) throws JsonProcessingException {

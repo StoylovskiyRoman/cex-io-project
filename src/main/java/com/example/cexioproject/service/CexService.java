@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -47,6 +46,12 @@ public class CexService {
 
     public List<Pair> getMinPair(String currencyName) {
         List<PairEntity> all = pairsRepository.findBySymbol1OrderByMinPriceAsc(currencyName);
+        return modelMapper.map(all, new TypeToken<List<Pair>>() {
+        }.getType());
+    }
+
+    public List<Pair> getMaxPairs(String currencyName) {
+        List<PairEntity> all = pairsRepository.findBySymbol1OrderByMaxPriceDesc(currencyName);
         return modelMapper.map(all, new TypeToken<List<Pair>>() {
         }.getType());
     }
