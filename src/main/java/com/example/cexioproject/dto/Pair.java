@@ -59,7 +59,7 @@ public class Pair {
     }
 
     public String getMinPrice() {
-        return minPrice;
+        return  minPrice;
     }
 
     public void setMinPrice(String minPrice) {

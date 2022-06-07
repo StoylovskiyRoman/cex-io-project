@@ -43,18 +43,52 @@ public class CexService {
         List<PairEntity> all = pairsRepository.findAll();
         return  modelMapper.map(all, new TypeToken<List<Pair>>() {}.getType());
     }
+    /**
+     * Return List of Data sorted by asc
+     * @param currencyName
+     * @return
+     */
 
-    public List<Pair> getMinPair(String currencyName) {
+    public List<Pair> getMinPairs(String currencyName) {
         List<PairEntity> all = pairsRepository.findBySymbol1OrderByMinPriceAsc(currencyName);
         return modelMapper.map(all, new TypeToken<List<Pair>>() {
         }.getType());
     }
+
+    /**
+     * Return List of Data sorted by desc
+     * @param currencyName
+     * @return
+     */
 
     public List<Pair> getMaxPairs(String currencyName) {
         List<PairEntity> all = pairsRepository.findBySymbol1OrderByMaxPriceDesc(currencyName);
         return modelMapper.map(all, new TypeToken<List<Pair>>() {
         }.getType());
     }
+    /**
+     * Return record with min price
+     * @param currencyName
+     * @return
+     */
+
+    public Pair getMinPair(String currencyName) {
+        PairEntity pairEntity = pairsRepository.findFirstBySymbol1OrderByMinPriceAsc(currencyName);
+        return modelMapper.map(pairEntity, Pair.class);
+    }
+
+    /**
+     * Return record with max price
+     * @param currencyName
+     * @return
+     */
+
+    public Pair getMaxPair(String currencyName) {
+        PairEntity pairEntity = pairsRepository.findFirstBySymbol1OrderByMaxPriceDesc(currencyName);
+        return modelMapper.map(pairEntity, Pair.class);
+    }
+
+
     public List<Pair> getAllDataWithPaging (String currencyName, int page, int size) throws JsonProcessingException {
         List<PairEntity> all = pairsRepository.findBySymbol1(currencyName, PageRequest.of(page, size));
         ObjectMapper objectMapper = new ObjectMapper().configure
@@ -63,5 +97,7 @@ public class CexService {
         return objectMapper.readValue(json, new TypeReference<List<Pair>>() {
         });
     }
+
+
 
 }
