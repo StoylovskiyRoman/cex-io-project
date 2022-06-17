@@ -3,7 +3,7 @@ package com.example.cexioproject.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Pairs")
+@Table(name = "pairs")
 public class PairEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
